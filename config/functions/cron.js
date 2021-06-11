@@ -25,13 +25,18 @@ module.exports = {
             product => product.created_at <= Date.parse("2021-06-11T03:14:39.886Z")
           );
       console.log(response) */
+      const initTime = Date.now();
       const response = await strapi
         .query('product')
         .find({
           created_at_gte: '2021-06-11T03:14:02.658Z',
           created_at_lte: '2021-06-11T03:14:39.886Z'
         });
-      console.log(response)
+      const finalTime = Date.now();
+      console.log(response);
+      console.log(initTime);
+      console.log(finalTime);
+      console.log(finalTime - initTime);
     } catch (error) {
       console.log(error);
     }
