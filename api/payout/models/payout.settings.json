@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payouts",
+  "info": {
+    "name": "Payout"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Total": {
+      "type": "integer"
+    }
+  }
+}
