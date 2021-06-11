@@ -1,4 +1,5 @@
 'use strict';
+const request = require("request-promise");
 
 /**
  * Cron config that gives you an opportunity
@@ -17,9 +18,19 @@ module.exports = {
    */
   '*/5 * * * * *': async () => {
     try {
-      const response = (await strapi.query("product").find()).filter(
-        product => product.created_at <= Date.parse("2021-06-11T03:14:39.886Z")
-      );
+      /* const response = (
+        await strapi
+          .query("product")
+          .find()).filter(
+            product => product.created_at <= Date.parse("2021-06-11T03:14:39.886Z")
+          );
+      console.log(response) */
+      const response = await strapi
+        .query('product')
+        .find({
+          created_at_gte: '2021-06-11T03:14:02.658Z',
+          created_at_lte: '2021-06-11T03:14:39.886Z'
+        });
       console.log(response)
     } catch (error) {
       console.log(error);
