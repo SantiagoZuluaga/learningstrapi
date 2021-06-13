@@ -6,25 +6,23 @@ module.exports = {
     options: {
       tz: "America/Bogota"
     },
-    task:  async () => {
+    task: async () => {
+      console.log("FACTURA NUEVA")
       try {
         const date = new Date();
-          const day = date.getDate();
-          const month = date.getMonth();
-          const year = date.getFullYear();
-          const initDate = `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}T00:00:00.000Z`
-          const finalDate = `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}T23:59:00.000Z`
+        const day = date.getDate();
+        const month = date.getMonth();
+        const year = date.getFullYear();
         const response = await strapi
           .query('product')
           .find({
-            created_at_gte: '2021-06-11T03:14:02.658Z',
-            created_at_lte: '2021-06-11T03:14:39.886Z'
+            created_at_gte: new Date(year, month, day, 0, 0, 0),
+            created_at_lte: new Date(year, month, day, 23, 59, 0),
           });
-        
+
         var totalPrice = 0;
         for (let i = 0; i < response.length; i++) {
           totalPrice = totalPrice + response[i].price;
-          
         }
 
         const entity = await strapi.services.payout.create({
@@ -41,20 +39,15 @@ module.exports = {
     options: {
       tz: "America/Bogota"
     },
-    task:  async () => {
-      console.log("PRODUCTO DE LAS 12 A.M")
+    task: async () => {
       try {
-        try {
-          const entity = await strapi.services.product.create({
-            title: "PRODUCTO DE LAS 12 A.M",
-            description: "PRODUCTO",
-            price: 200,
-            quiantity: 20,
-          })
-          return sanitizeEntity(entity, { model: strapi.models.product });
-        } catch (error) {
-          console.log(error);
-        }
+        const entity = await strapi.services.product.create({
+          title: "PRODUCTO NUEVO",
+          description: "PRODUCTO",
+          price: Math.floor(Math.random() * 301),
+          quantity: Math.floor(Math.random() * 21),
+        })
+        return sanitizeEntity(entity, { model: strapi.models.product });
       } catch (error) {
         console.log(error);
       }
@@ -64,20 +57,15 @@ module.exports = {
     options: {
       tz: "America/Bogota"
     },
-    task:  async () => {
-      console.log("PRODUCTO DE LAS 3 A.M")
+    task: async () => {
       try {
-        try {
-          const entity = await strapi.services.product.create({
-            title: "PRODUCTO DE LAS 3 A.M",
-            description: "PRODUCTO",
-            price: 200,
-            quiantity: 20,
-          })
-          return sanitizeEntity(entity, { model: strapi.models.product });
-        } catch (error) {
-          console.log(error);
-        }
+        const entity = await strapi.services.product.create({
+          title: "PRODUCTO NUEVO",
+          description: "PRODUCTO",
+          price: Math.floor(Math.random() * 301),
+          quantity: Math.floor(Math.random() * 21),
+        })
+        return sanitizeEntity(entity, { model: strapi.models.product });
       } catch (error) {
         console.log(error);
       }
@@ -87,20 +75,15 @@ module.exports = {
     options: {
       tz: "America/Bogota"
     },
-    task:  async () => {
-      console.log("PRODUCTO DE LAS 6 A.M")
+    task: async () => {
       try {
-        try {
-          const entity = await strapi.services.product.create({
-            title: "PRODUCTO DE LAS 6 A.M",
-            description: "PRODUCTO",
-            price: 200,
-            quiantity: 20,
-          })
-          return sanitizeEntity(entity, { model: strapi.models.product });
-        } catch (error) {
-          console.log(error);
-        }
+        const entity = await strapi.services.product.create({
+          title: "PRODUCTO NUEVO",
+          description: "PRODUCTO",
+          price: Math.floor(Math.random() * 301),
+          quantity: Math.floor(Math.random() * 21),
+        })
+        return sanitizeEntity(entity, { model: strapi.models.product });
       } catch (error) {
         console.log(error);
       }
@@ -110,20 +93,15 @@ module.exports = {
     options: {
       tz: "America/Bogota"
     },
-    task:  async () => {
-      console.log("PRODUCTO DE LAS 9 A.M")
+    task: async () => {
       try {
-        try {
-          const entity = await strapi.services.product.create({
-            title: "PRODUCTO DE LAS 9 A.M",
-            description: "PRODUCTO",
-            price: 200,
-            quiantity: 20,
-          })
-          return sanitizeEntity(entity, { model: strapi.models.product });
-        } catch (error) {
-          console.log(error);
-        }
+        const entity = await strapi.services.product.create({
+          title: "PRODUCTO NUEVO",
+          description: "PRODUCTO",
+          price: Math.floor(Math.random() * 301),
+          quantity: Math.floor(Math.random() * 21),
+        })
+        return sanitizeEntity(entity, { model: strapi.models.product });
       } catch (error) {
         console.log(error);
       }
@@ -133,20 +111,15 @@ module.exports = {
     options: {
       tz: "America/Bogota"
     },
-    task:  async () => {
-      console.log("PRODUCTO DE LAS 12 P.M")
+    task: async () => {
       try {
-        try {
-          const entity = await strapi.services.product.create({
-            title: "PRODUCTO DE LAS 12 P.M",
-            description: "PRODUCTO",
-            price: 200,
-            quiantity: 20,
-          })
-          return sanitizeEntity(entity, { model: strapi.models.product });
-        } catch (error) {
-          console.log(error);
-        }
+        const entity = await strapi.services.product.create({
+          title: "PRODUCTO NUEVO",
+          description: "PRODUCTO",
+          price: Math.floor(Math.random() * 301),
+          quantity: Math.floor(Math.random() * 21),
+        })
+        return sanitizeEntity(entity, { model: strapi.models.product });
       } catch (error) {
         console.log(error);
       }
@@ -156,20 +129,15 @@ module.exports = {
     options: {
       tz: "America/Bogota"
     },
-    task:  async () => {
-      console.log("PRODUCTO DE LAS 3 P.M")
+    task: async () => {
       try {
-        try {
-          const entity = await strapi.services.product.create({
-            title: "PRODUCTO DE LAS 3 P.M",
-            description: "PRODUCTO",
-            price: 200,
-            quiantity: 20,
-          })
-          return sanitizeEntity(entity, { model: strapi.models.product });
-        } catch (error) {
-          console.log(error);
-        }
+        const entity = await strapi.services.product.create({
+          title: "PRODUCTO NUEVO",
+          description: "PRODUCTO",
+          price: Math.floor(Math.random() * 301),
+          quantity: Math.floor(Math.random() * 21),
+        })
+        return sanitizeEntity(entity, { model: strapi.models.product });
       } catch (error) {
         console.log(error);
       }
@@ -179,20 +147,15 @@ module.exports = {
     options: {
       tz: "America/Bogota"
     },
-    task:  async () => {
-      console.log("PRODUCTO DE LAS 6 P.M")
+    task: async () => {
       try {
-        try {
-          const entity = await strapi.services.product.create({
-            title: "PRODUCTO DE LAS 6 P.M",
-            description: "PRODUCTO",
-            price: 200,
-            quiantity: 20,
-          })
-          return sanitizeEntity(entity, { model: strapi.models.product });
-        } catch (error) {
-          console.log(error);
-        }
+        const entity = await strapi.services.product.create({
+          title: "PRODUCTO NUEVO",
+          description: "PRODUCTO",
+          price: Math.floor(Math.random() * 301),
+          quantity: Math.floor(Math.random() * 21),
+        })
+        return sanitizeEntity(entity, { model: strapi.models.product });
       } catch (error) {
         console.log(error);
       }
@@ -202,20 +165,15 @@ module.exports = {
     options: {
       tz: "America/Bogota"
     },
-    task:  async () => {
-      console.log("PRODUCTO DE LAS 9 P.M")
+    task: async () => {
       try {
-        try {
-          const entity = await strapi.services.product.create({
-            title: "PRODUCTO DE LAS 9 P.M",
-            description: "PRODUCTO",
-            price: 200,
-            quiantity: 20,
-          })
-          return sanitizeEntity(entity, { model: strapi.models.product });
-        } catch (error) {
-          console.log(error);
-        }
+        const entity = await strapi.services.product.create({
+          title: "PRODUCTO NUEVO",
+          description: "PRODUCTO",
+          price: Math.floor(Math.random() * 301),
+          quantity: Math.floor(Math.random() * 21),
+        })
+        return sanitizeEntity(entity, { model: strapi.models.product });
       } catch (error) {
         console.log(error);
       }

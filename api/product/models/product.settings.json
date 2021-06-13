@@ -23,6 +23,10 @@
     },
     "quantity": {
       "type": "integer"
+    },
+    "payout": {
+      "via": "products",
+      "model": "payout"
     }
   }
 }
