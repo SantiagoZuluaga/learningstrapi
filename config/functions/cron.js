@@ -35,140 +35,20 @@ module.exports = {
       }
     }
   },
-  '0 0 0 * * *': {
+  '*/30 * * * *': {
     options: {
       tz: "America/Bogota"
     },
     task: async () => {
       try {
+        const date = new Date();
+        const day = date.getDate();
+        const month = date.getMonth();
+        const year = date.getFullYear();
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
         const entity = await strapi.services.product.create({
-          title: "PRODUCTO NUEVO",
-          description: "PRODUCTO",
-          price: Math.floor(Math.random() * 301),
-          quantity: Math.floor(Math.random() * 21),
-        })
-        return sanitizeEntity(entity, { model: strapi.models.product });
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  },
-  '0 0 3 * * *': {
-    options: {
-      tz: "America/Bogota"
-    },
-    task: async () => {
-      try {
-        const entity = await strapi.services.product.create({
-          title: "PRODUCTO NUEVO",
-          description: "PRODUCTO",
-          price: Math.floor(Math.random() * 301),
-          quantity: Math.floor(Math.random() * 21),
-        })
-        return sanitizeEntity(entity, { model: strapi.models.product });
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  },
-  '0 0 6 * * *': {
-    options: {
-      tz: "America/Bogota"
-    },
-    task: async () => {
-      try {
-        const entity = await strapi.services.product.create({
-          title: "PRODUCTO NUEVO",
-          description: "PRODUCTO",
-          price: Math.floor(Math.random() * 301),
-          quantity: Math.floor(Math.random() * 21),
-        })
-        return sanitizeEntity(entity, { model: strapi.models.product });
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  },
-  '0 0 9 * * *': {
-    options: {
-      tz: "America/Bogota"
-    },
-    task: async () => {
-      try {
-        const entity = await strapi.services.product.create({
-          title: "PRODUCTO NUEVO",
-          description: "PRODUCTO",
-          price: Math.floor(Math.random() * 301),
-          quantity: Math.floor(Math.random() * 21),
-        })
-        return sanitizeEntity(entity, { model: strapi.models.product });
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  },
-  '0 0 12 * * *': {
-    options: {
-      tz: "America/Bogota"
-    },
-    task: async () => {
-      try {
-        const entity = await strapi.services.product.create({
-          title: "PRODUCTO NUEVO",
-          description: "PRODUCTO",
-          price: Math.floor(Math.random() * 301),
-          quantity: Math.floor(Math.random() * 21),
-        })
-        return sanitizeEntity(entity, { model: strapi.models.product });
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  },
-  '0 0 15 * * *': {
-    options: {
-      tz: "America/Bogota"
-    },
-    task: async () => {
-      try {
-        const entity = await strapi.services.product.create({
-          title: "PRODUCTO NUEVO",
-          description: "PRODUCTO",
-          price: Math.floor(Math.random() * 301),
-          quantity: Math.floor(Math.random() * 21),
-        })
-        return sanitizeEntity(entity, { model: strapi.models.product });
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  },
-  '0 0 18 * * *': {
-    options: {
-      tz: "America/Bogota"
-    },
-    task: async () => {
-      try {
-        const entity = await strapi.services.product.create({
-          title: "PRODUCTO NUEVO",
-          description: "PRODUCTO",
-          price: Math.floor(Math.random() * 301),
-          quantity: Math.floor(Math.random() * 21),
-        })
-        return sanitizeEntity(entity, { model: strapi.models.product });
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  },
-  '0 0 21 * * *': {
-    options: {
-      tz: "America/Bogota"
-    },
-    task: async () => {
-      try {
-        const entity = await strapi.services.product.create({
-          title: "PRODUCTO NUEVO",
+          title: `PRODUCTO NUEVO: ${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day} ${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}`,
           description: "PRODUCTO",
           price: Math.floor(Math.random() * 301),
           quantity: Math.floor(Math.random() * 21),
