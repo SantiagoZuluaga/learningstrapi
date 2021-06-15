@@ -2,7 +2,7 @@
 const { sanitizeEntity } = require('strapi-utils');
 
 module.exports = {
-  '0 59 23 * * *': {
+  '0 24 9 * * *': {
     options: {
       tz: "America/Bogota"
     },
@@ -21,13 +21,16 @@ module.exports = {
           });
 
         var totalPrice = 0;
+        var products = [];
         for (let i = 0; i < response.length; i++) {
           totalPrice = totalPrice + response[i].price;
+          products.push(response[i].id);
         }
 
         const entity = await strapi.services.payout.create({
           title: `PAYOUT: ${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`,
-          total: totalPrice
+          total: totalPrice,
+          products
         })
         return sanitizeEntity(entity, { model: strapi.models.payout });
       } catch (error) {
