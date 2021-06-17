@@ -38,7 +38,7 @@ module.exports = {
       }
     }
   },
-  '*/30 * * * *': {
+  '*/2 * * * *': {
     options: {
       tz: "America/Bogota"
     },
