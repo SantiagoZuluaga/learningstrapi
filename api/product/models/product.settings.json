@@ -27,6 +27,9 @@
     "payout": {
       "via": "products",
       "model": "payout"
+    },
+    "userID": {
+      "type": "string"
     }
   }
 }

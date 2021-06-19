@@ -1,4 +1,10 @@
 'use strict';
+const {
+    findSocketConnection,
+    createSocketConnection,
+    disconnectSocketConnection,
+    connectSocketConnection
+} = require('./socket');
 
 /**
  * An asynchronous bootstrap function that runs before
@@ -20,10 +26,29 @@ module.exports = async () => {
     });
 
     io.on('connection', async (socket) => {
-        console.log(socket.id);
-        socket.send(`welcome user: ${socket.id}`);
-        socket.on("disconnect", () => {
-            console.log(`User disconnected: ${socket.id}`);
+        const socketID = socket.id;
+
+        socket.on("disconnect", async () => {
+            try {
+                await disconnectSocketConnection(socketID);
+            } catch (error) {
+                console.log(error);
+            }
+
+        });
+
+        socket.on("join", async (data) => {
+            const userID = data.userID;
+            try {
+                const userExists = await findSocketConnection(userID);
+                if (userExists.length > 0) {
+                    await connectSocketConnection(userID, socketID);
+                } else {
+                    await createSocketConnection(userID, socketID);
+                }
+            } catch (error) {
+                console.log(error);
+            }
         });
     });
 

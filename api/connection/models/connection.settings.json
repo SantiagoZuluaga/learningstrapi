@@ -1,9 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "payouts",
+  "collectionName": "connections",
   "info": {
-    "name": "Payout",
-    "description": ""
+    "name": "Connection"
   },
   "options": {
     "increments": true,
@@ -12,15 +11,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "userID": {
       "type": "string"
     },
-    "total": {
-      "type": "integer"
+    "socketID": {
+      "type": "string"
     },
-    "products": {
-      "via": "payout",
-      "collection": "product"
+    "isConnected": {
+      "type": "boolean"
     }
   }
 }
