@@ -16,7 +16,6 @@ const createSocketConnection = async (userID, socketID) => {
             socketID: socketID,
             isConnected: true
         });
-        sanitizeEntity(entity, { model: strapi.models.connection });
     }
     catch (err) {
         console.log(err);
