@@ -17,17 +17,11 @@ const {
  */
 
 module.exports = async () => {
-    var io = require('socket.io')(strapi.server, {
-        cors: {
-            origin: "http://127.0.0.1:5500",
-            methods: ["GET", "POST"],
-            credentials: true
-        }
-    });
+    var io = require('socket.io')(strapi.server);
 
     io.on('connection', async (socket) => {
         const socketID = socket.id;
-
+        console.log(socketID);
         socket.on("disconnect", async () => {
             try {
                 await disconnectSocketConnection(socketID);
